@@ -1,0 +1,93 @@
+:root {
+    --primary-color: #FF6B6B;
+    --secondary-color: #4ECDC4;
+    --background-color: #F8F9FA;
+    --text-color: #2D3436;
+    --card-bg: #FFFFFF;
+    --progress-bg: #E9ECEF;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-color);
+}
+
+.countdown-wrapper {
+    background: var(--card-bg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 90%;
+}
+
+.time-units-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    gap: 1rem;
+}
+
+.time-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.time-card:hover {
+    transform: translateY(-3px);
+}
+
+.time-card .value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+.time-card .label {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.separator {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 0 0.5rem;
+}
+
+.progress-bar-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.progress {
+    background-color: var(--progress-bg);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--secondary-color);
+    transition: width 1s linear;
+}
+
+@media (max-width: 768px) {
+    .time-units-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .time-card .value {
+        font-size: 2rem;
+    }
+}
