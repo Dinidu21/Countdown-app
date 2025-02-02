@@ -1,7 +1,7 @@
 # 180-Day Strategic Countdown Timer
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/Dinidu21/Countdown-app)
-![GitHub Deployment](https://github.com/Dinidu21/Countdown-app/workflows/Deploy/badge.svg)
+![GitHub Deployment](https://github.com/dinidu21/Countdown-app/actions/workflows/deploy.yml/badge.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 A professional countdown timer tracking 180 days from January 27, 2025, featuring a modern UI with dynamic progress tracking and responsive design.
