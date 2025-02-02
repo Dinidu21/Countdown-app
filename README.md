@@ -1,4 +1,3 @@
-```markdown
 # 180-Day Strategic Countdown Timer
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/<username>/<repo-name>)
@@ -7,9 +6,7 @@
 
 A professional countdown timer tracking 180 days from January 27, 2025, featuring a modern UI with dynamic progress tracking and responsive design.
 
-**Live Demo:** [https://<username>.github.io/<repo-name>](https://<username>.github.io/<repo-name>)
-
-![Countdown Timer Screenshot](https://via.placeholder.com/800x500.png?text=Project+Horizon+Countdown+Timer+Screenshot)
+**Live Demo:** [https://dinidu21.github.io/Countdown-app/](https://dinidu21.github.io/Countdown-app/)
 
 ## Features
 
@@ -25,7 +22,7 @@ A professional countdown timer tracking 180 days from January 27, 2025, featurin
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/<username>/<repo-name>.git
+git clone https://github.com/Dinidu21/Countdown-app.git
 ```
 2. Open `index.html` in any modern web browser
 
@@ -36,8 +33,6 @@ After deployment, the timer will automatically:
 - Show time remaining in days, hours, minutes, and seconds
 - Update progress bar in real-time
 - Display end date calculation (July 26, 2025)
-
-**Live Demo:** [https://<username>.github.io/<repo-name>](https://<username>.github.io/<repo-name>)
 
 ## Technologies Used
 
