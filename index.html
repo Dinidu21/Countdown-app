@@ -13,6 +13,7 @@
   <div class="countdown-wrapper p-4 rounded-4">
     <div class="text-center mb-5">
       <h1 class="display-5 fw-semibold mb-3">Project Horizon Timeline</h1>
+      <div id="completionMessage" class="d-none alert alert-success fs-4"></div>
       <div class="progress-bar-container mb-4">
         <div class="progress" style="height: 8px;">
           <div id="progress" class="progress-bar" role="progressbar"></div>
@@ -47,8 +48,11 @@
     </div>
 
     <div class="text-center mt-5">
-      <button class="btn btn-outline-secondary" onclick="location.reload()">
+      <button id="refreshBtn" class="btn btn-outline-secondary">
         <i class="fas fa-sync-alt me-2"></i>Refresh Timer
+      </button>
+      <button id="stopBtn" class="btn btn-outline-danger ms-2 d-none">
+        <i class="fas fa-stop me-2"></i>Stop Timer
       </button>
     </div>
   </div>

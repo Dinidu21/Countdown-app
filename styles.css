@@ -5,6 +5,7 @@
     --text-color: #2D3436;
     --card-bg: #FFFFFF;
     --progress-bg: #E9ECEF;
+    --transition-time: 0.3s;
 }
 
 body {
@@ -74,7 +75,31 @@ body {
 
 .progress-bar {
     background-color: var(--secondary-color);
-    transition: width 1s linear;
+    transition: width 1s linear, background-color 1s ease;
+}
+
+.changing {
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all var(--transition-time) ease-in-out;
+}
+
+#completionMessage {
+    animation: celebrate 1.5s ease infinite;
+}
+
+#stopBtn {
+    transition: transform 0.2s ease;
+}
+
+#stopBtn:hover {
+    transform: scale(1.05);
+}
+
+@keyframes celebrate {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 @media (max-width: 768px) {
