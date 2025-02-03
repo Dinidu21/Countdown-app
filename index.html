@@ -14,45 +14,48 @@
     <div class="text-center mb-5">
       <h1 class="display-5 fw-semibold mb-3">Project Horizon Timeline</h1>
       <div id="completionMessage" class="d-none alert alert-success fs-4"></div>
-      <div class="progress-bar-container mb-4">
-        <div class="progress" style="height: 8px;">
-          <div id="progress" class="progress-bar" role="progressbar"></div>
+    </div>
+
+    <!-- Timeline Comparison Section -->
+    <div class="timeline-comparison mb-5">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="time-section elapsed-time p-4 rounded-3">
+            <h4 class="mb-3"><i class="fas fa-hourglass-start me-2"></i>Time Invested</h4>
+            <div class="time-grid" id="elapsedTime"></div>
+          </div>
         </div>
-        <div class="d-flex justify-content-between mt-2">
-          <span class="text-muted">Start: Jan 27, 2025</span>
-          <span class="text-muted" id="endDate"></span>
+        <div class="col-md-6">
+          <div class="time-section remaining-time p-4 rounded-3">
+            <h4 class="mb-3"><i class="fas fa-hourglass-end me-2"></i>Time Remaining</h4>
+            <div class="time-grid" id="remainingTime"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="time-units-grid">
-      <div class="time-card">
-        <div class="value" id="days">0</div>
-        <div class="label">Days</div>
+    <!-- Progress Section -->
+    <div class="progress-bar-container mb-4">
+      <div class="d-flex justify-content-between mb-2">
+        <small>Start: Jan 27, 2025</small>
+        <small id="endDate"></small>
       </div>
-      <div class="separator">:</div>
-      <div class="time-card">
-        <div class="value" id="hours">0</div>
-        <div class="label">Hours</div>
+      <div class="progress" style="height: 12px;">
+        <div id="progress" class="progress-bar" role="progressbar"></div>
       </div>
-      <div class="separator">:</div>
-      <div class="time-card">
-        <div class="value" id="minutes">0</div>
-        <div class="label">Minutes</div>
-      </div>
-      <div class="separator">:</div>
-      <div class="time-card">
-        <div class="value" id="seconds">0</div>
-        <div class="label">Seconds</div>
+      <div class="d-flex justify-content-between mt-2">
+        <small id="elapsedPercentage">0%</small>
+        <small id="remainingPercentage">100%</small>
       </div>
     </div>
 
-    <div class="text-center mt-5">
+    <!-- Controls -->
+    <div class="text-center mt-4">
       <button id="refreshBtn" class="btn btn-outline-secondary">
-        <i class="fas fa-sync-alt me-2"></i>Refresh Timer
+        <i class="fas fa-sync-alt me-2"></i>Refresh
       </button>
-      <button id="stopBtn" class="btn btn-outline-danger ms-2 d-none">
-        <i class="fas fa-stop me-2"></i>Stop Timer
+      <button id="stopBtn" class="btn btn-outline-danger ms-2">
+        <i class="fas fa-stop me-2"></i>Pause
       </button>
     </div>
   </div>
