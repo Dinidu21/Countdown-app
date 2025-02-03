@@ -8,9 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalDuration = endDate - startDate;
 
     // Initialize display
-    document.getElementById('endDate').textContent = `End: ${endDate.toLocaleDateString('en-US', {
-        month: 'short', day: 'numeric', year: 'numeric'
-    })}`;
+    const endDateElement = document.getElementById('endDate');
+    if(endDateElement) {
+        endDateElement.textContent = `End: ${endDate.toLocaleDateString('en-US', {
+            month: 'short', day: 'numeric', year: 'numeric'
+        })}`;
+    }
 
     function formatNumber(num) {
         return String(num).padStart(2, '0');
@@ -31,15 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showCompletion() {
         clearInterval(intervalId);
-        document.getElementById('completionMessage').classList.remove('d-none');
-        document.getElementById('completionMessage').textContent = '🚀 Project Horizon Completed!';
-        stopBtn.classList.add('d-none');
-        refreshBtn.classList.remove('d-none');
-
-        // Set final progress state
-        document.getElementById('progress').style.width = '100%';
-        document.getElementById('elapsedPercentage').textContent = '100%';
-        document.getElementById('remainingPercentage').textContent = '0%';
+        const completionMessage = document.getElementById('completionMessage');
+        if(completionMessage) {
+            completionMessage.classList.remove('d-none');
+            completionMessage.textContent = '🚀 Project Horizon Completed!';
+        }
+        if(stopBtn) stopBtn.classList.add('d-none');
+        if(refreshBtn) refreshBtn.classList.remove('d-none');
     }
 
     function updateTimer() {
@@ -55,17 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update main progress
         const progressPercent = Math.min((elapsed / totalDuration) * 100, 100);
         const progressBar = document.getElementById('progress');
-        progressBar.style.width = `${progressPercent}%`;
+        if(progressBar) {
+            progressBar.style.width = `${progressPercent}%`;
+            const hue = 120 - (progressPercent * 0.6);
+            progressBar.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+        }
 
-        // Update current percentage indicator
+        // Update current percentage
         const currentPercentElement = document.getElementById('currentPercentage');
-        const percentValue = Math.round(progressPercent);
-        currentPercentElement.innerHTML = `<span class="badge bg-primary rounded-pill">${percentValue}%</span>`;
-        currentPercentElement.style.left = `${progressPercent}%`;
-
-        // Update progress color
-        const hue = 120 - (progressPercent * 0.6);
-        progressBar.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+        if(currentPercentElement) {
+            const percentValue = Math.round(progressPercent);
+            currentPercentElement.innerHTML = `<span class="badge bg-primary rounded-pill">${percentValue}%</span>`;
+            currentPercentElement.style.left = `${progressPercent}%`;
+        }
 
         // Calculate time units
         const daysRemaining = Math.floor(remaining / (1000 * 60 * 60 * 24));
@@ -79,67 +82,56 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutesElapsed = currentDate.getMinutes();
         const secondsElapsed = currentDate.getSeconds();
 
-        // Calculate individual progress percentages
-        const dayPercentage = (daysElapsed / 90) * 100;
-        const hourPercentage = (hoursElapsed / 24) * 100;
-        const minutePercentage = (minutesElapsed / 60) * 100;
-        const secondPercentage = (secondsElapsed / 60) * 100;
-
         // Update elapsed time display
         const elapsedContainer = document.getElementById('elapsedTime');
-        elapsedContainer.innerHTML = '';
-        elapsedContainer.append(
-            createTimeCard('elapsed', daysElapsed, 'Days', dayPercentage),
-            createTimeCard('elapsed', formatNumber(hoursElapsed), 'Hours', hourPercentage),
-            createTimeCard('elapsed', formatNumber(minutesElapsed), 'Minutes', minutePercentage),
-            createTimeCard('elapsed', formatNumber(secondsElapsed), 'Seconds', secondPercentage)
-        );
+        if(elapsedContainer) {
+            elapsedContainer.innerHTML = '';
+            elapsedContainer.append(
+                createTimeCard('elapsed', daysElapsed, 'Days', (daysElapsed/90)*100),
+                createTimeCard('elapsed', formatNumber(hoursElapsed), 'Hours', (hoursElapsed/24)*100),
+                createTimeCard('elapsed', formatNumber(minutesElapsed), 'Minutes', (minutesElapsed/60)*100),
+                createTimeCard('elapsed', formatNumber(secondsElapsed), 'Seconds', (secondsElapsed/60)*100)
+            );
+        }
 
         // Update remaining time display
         const remainingContainer = document.getElementById('remainingTime');
-        remainingContainer.innerHTML = '';
-        remainingContainer.append(
-            createTimeCard('remaining', daysRemaining, 'Days', 100-dayPercentage),
-            createTimeCard('remaining', formatNumber(hoursRemaining), 'Hours', 100-hourPercentage),
-            createTimeCard('remaining', formatNumber(minutesRemaining), 'Minutes', 100-minutePercentage),
-            createTimeCard('remaining', formatNumber(secondsRemaining), 'Seconds', 100-secondPercentage)
-        );
-
-        // Update main display with animation
-        ['days', 'hours', 'minutes', 'seconds'].forEach((unit, index) => {
-            const element = document.getElementById(unit);
-            const value = index === 0 ? daysRemaining :
-                index === 1 ? formatNumber(hoursRemaining) :
-                    index === 2 ? formatNumber(minutesRemaining) :
-                        formatNumber(secondsRemaining);
-
-            if (element.textContent !== value) {
-                element.classList.add('changing');
-                setTimeout(() => {
-                    element.textContent = value;
-                    element.classList.remove('changing');
-                }, 200);
-            }
-        });
+        if(remainingContainer) {
+            remainingContainer.innerHTML = '';
+            remainingContainer.append(
+                createTimeCard('remaining', daysRemaining, 'Days', 100-(daysElapsed/90)*100),
+                createTimeCard('remaining', formatNumber(hoursRemaining), 'Hours', 100-(hoursElapsed/24)*100),
+                createTimeCard('remaining', formatNumber(minutesRemaining), 'Minutes', 100-(minutesElapsed/60)*100),
+                createTimeCard('remaining', formatNumber(secondsRemaining), 'Seconds', 100-(secondsElapsed/60)*100)
+            );
+        }
 
         // Update percentage displays
-        document.getElementById('elapsedPercentage').textContent = `${Math.round(progressPercent)}%`;
-        document.getElementById('remainingPercentage').textContent = `${Math.round(100 - progressPercent)}%`;
+        const elapsedPercentage = document.getElementById('elapsedPercentage');
+        const remainingPercentage = document.getElementById('remainingPercentage');
+        if(elapsedPercentage && remainingPercentage) {
+            elapsedPercentage.textContent = `${Math.round(progressPercent)}%`;
+            remainingPercentage.textContent = `${Math.round(100 - progressPercent)}%`;
+        }
     }
 
     // Control buttons
-    refreshBtn.addEventListener('click', () => {
-        window.location.reload();
-    });
+    if(refreshBtn) {
+        refreshBtn.addEventListener('click', () => window.location.reload());
+    }
 
-    stopBtn.addEventListener('click', () => {
-        clearInterval(intervalId);
-        stopBtn.classList.add('d-none');
-        refreshBtn.classList.remove('d-none');
-    });
+    if(stopBtn) {
+        stopBtn.addEventListener('click', () => {
+            clearInterval(intervalId);
+            stopBtn.classList.add('d-none');
+            if(refreshBtn) refreshBtn.classList.remove('d-none');
+        });
+    }
 
     // Initial setup
-    updateTimer();
-    intervalId = setInterval(updateTimer, 1000);
-    stopBtn.classList.remove('d-none');
+    if(typeof updateTimer === 'function') {
+        updateTimer();
+        intervalId = setInterval(updateTimer, 1000);
+    }
+    if(stopBtn) stopBtn.classList.remove('d-none');
 });
