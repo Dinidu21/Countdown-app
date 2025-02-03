@@ -4,7 +4,7 @@
 ![GitHub Deployment](https://github.com/dinidu21/Countdown-app/actions/workflows/deploy.yml/badge.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-A professional countdown timer tracking 180 days from January 27, 2025, featuring a modern UI with dynamic progress tracking and responsive design.
+A professional countdown timer tracking 90 days from January 27, 2025, featuring a modern UI with dynamic progress tracking and responsive design.
 
 **Live Demo:** [https://dinidu21.github.io/Countdown-app/](https://dinidu21.github.io/Countdown-app)
 
