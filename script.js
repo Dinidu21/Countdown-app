@@ -52,10 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Calculate main progress
+        // Update main progress
         const progressPercent = Math.min((elapsed / totalDuration) * 100, 100);
         const progressBar = document.getElementById('progress');
         progressBar.style.width = `${progressPercent}%`;
+
+        // Update current percentage indicator
+        const currentPercentElement = document.getElementById('currentPercentage');
+        const percentValue = Math.round(progressPercent);
+        currentPercentElement.innerHTML = `<span class="badge bg-primary rounded-pill">${percentValue}%</span>`;
+        currentPercentElement.style.left = `${progressPercent}%`;
 
         // Update progress color
         const hue = 120 - (progressPercent * 0.6);

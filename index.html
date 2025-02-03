@@ -38,14 +38,19 @@
     <div class="progress-bar-container mb-4">
       <div class="d-flex justify-content-between mb-2">
         <small>Start: Jan 27, 2025</small>
-        <small id="endDate"></small>
+        <small id="endDate">End: Apr 27, 2025</small>
       </div>
       <div class="progress" style="height: 12px;">
         <div id="progress" class="progress-bar" role="progressbar"></div>
       </div>
-      <div class="d-flex justify-content-between mt-2">
-        <small id="elapsedPercentage">0%</small>
-        <small id="remainingPercentage">100%</small>
+      <div class="position-relative mt-2" style="height: 20px;">
+        <div class="d-flex justify-content-between">
+          <small>0%</small>
+          <small>100%</small>
+        </div>
+        <div id="currentPercentage" class="position-absolute start-50 translate-middle-x text-center" style="width: 60px; top: -2px">
+          <span class="badge bg-primary rounded-pill">50%</span>
+        </div>
       </div>
     </div>
 
