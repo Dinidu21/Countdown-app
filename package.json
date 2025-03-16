@@ -1,0 +1,16 @@
+{
+  "name": "counterapp",
+  "version": "1.0.0",
+  "description": "![GitHub last commit](https://img.shields.io/github/last-commit/Dinidu21/Countdown-app)\r ![GitHub Deployment](https://github.com/dinidu21/Countdown-app/actions/workflows/deploy.yml/badge.svg)\r ![License](https://img.shields.io/badge/License-MIT-blue.svg)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "vite": "^6.2.2"
+  }
+}
