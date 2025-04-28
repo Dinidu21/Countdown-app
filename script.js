@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     let intervalId = null;
-    const startDate = new Date('2025-01-27T00:00:00');
+    const startDate = new Date('2025-04-28T00:00:00');
     const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + 90);
+    endDate.setDate(startDate.getDate() + 140);
     const refreshBtn = document.getElementById('refreshBtn');
     const stopBtn = document.getElementById('stopBtn');
     const totalDuration = endDate - startDate;
